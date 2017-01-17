@@ -9,6 +9,7 @@ app.set('views','./app/views');
 consign()
 	.include('app/routes')
 	.then('config/dbConnection.js')
+	.then('app/models')
 	.into(app);// estou scanner em toda a pasta routes para incluir em app
 
 module.exports = app;
