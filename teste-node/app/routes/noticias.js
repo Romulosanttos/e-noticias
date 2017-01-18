@@ -5,8 +5,15 @@ module.exports = function(application){
 		var connection = application.config.dbConnection();
 		var NoticiasDAO = new application.app.models.NoticiasDAO(connection);
 
-		NoticiasDAO.getNoticias(function(error, result){
-			res.render("noticias/noticias", {noticias :result});
+		NoticiasDAO.getNoticias(function(err, result){
+        if (err) {
+
+            console.log("ERROR : ",err);            
+        } else {            
+            res.render("noticias/noticias", {noticias :result});
+            console.log("result from db is : ",result);   
+        } 
+			
 		});
 	});
 };
